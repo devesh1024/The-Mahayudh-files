@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Mahayudh Files — TVA Case M-001</title>
+<style>
+:root{--bg:#050b08;--panel:#0b1a13;--panel2:#10241a;--gold:#b8963e;--gold2:#d9b95b;--ivory:#efe9d6;--dim:#9fa893;--red:#8c2f2f;--em:#2fe08a;--line:rgba(184,150,62,.35);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#050b08}}
+:root[data-theme="dark"]{--bg:#050b08}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 0,#0f2a1d 0,var(--bg) 60%);color:var(--ivory);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden;transition:background 2s}
+body.warm{background:radial-gradient(ellipse at 50% 20%,#4a3410 0,#1d1408 65%)}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);z-index:50}
+body.warm::after{opacity:.2}
+#sweep{position:fixed;left:0;right:0;height:80px;top:-80px;background:linear-gradient(transparent,rgba(47,224,138,.08),transparent);animation:sweep 6s linear infinite;pointer-events:none;z-index:49}
+@keyframes sweep{to{top:100vh}}
+#app{max-width:960px;margin:0 auto;padding:28px 18px 60px}
+h1,h2,h3,.cond{font-family:"Arial Narrow","Roboto Condensed",Impact,sans-serif;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin:0}
+h1{font-size:clamp(1.6rem,4.5vw,2.6rem);color:var(--gold2);line-height:1.2}
+h2{font-size:clamp(1.3rem,3.6vw,2rem);color:var(--gold2)}
+.meta{display:flex;flex-wrap:wrap;gap:6px 22px;font:12px/1.4 ui-monospace,Consolas,monospace;color:var(--em);letter-spacing:.1em;border:1px solid var(--line);padding:10px 14px;background:rgba(11,26,19,.7)}
+.meta b{color:var(--gold2);font-weight:600}
+.panel{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);padding:20px;margin:18px 0;box-shadow:0 0 30px rgba(47,224,138,.05)}
+.sub{color:var(--dim);font-size:1.05rem}
+.btn{font:inherit;font-family:"Arial Narrow",Impact,sans-serif;letter-spacing:.18em;text-transform:uppercase;font-weight:700;background:transparent;color:var(--gold2);border:1px solid var(--gold);padding:14px 26px;cursor:pointer;margin-top:18px;transition:.2s;font-size:1rem}
+.btn:hover:not(:disabled),.btn:focus-visible{background:var(--gold);color:#0a0f0b;box-shadow:0 0 22px rgba(217,185,91,.4);outline:none}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.btn.ghost{border-color:var(--dim);color:var(--dim);padding:8px 14px;font-size:.8rem}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.card{text-align:left;font:inherit;color:var(--ivory);background:var(--panel);border:1px solid var(--line);padding:18px;cursor:pointer;transition:.2s;width:100%}
+.card:hover{border-color:var(--gold2);transform:translateY(-2px)}
+.card.sel{border-color:var(--em);background:#0f2f20;box-shadow:0 0 0 1px var(--em),0 0 28px rgba(47,224,138,.25)}
+.card h3{color:var(--gold2);font-size:1.15rem;margin-bottom:10px}
+.card ul{margin:0;padding-left:18px;color:var(--dim)}.card li{margin:5px 0}
+.card .tick{float:right;color:var(--em);font:12px ui-monospace,monospace;letter-spacing:.1em}
+.opt b{color:var(--gold2)}
+.opt .k{display:inline-block;width:26px;height:26px;line-height:24px;text-align:center;border:1px solid var(--gold);color:var(--gold2);margin-right:10px;font-family:ui-monospace,monospace}
+.sel .k{background:var(--em);color:#04120a;border-color:var(--em)}
+.loki{border-left:3px solid var(--em);padding:12px 16px;background:rgba(47,224,138,.07);margin-top:16px;animation:fade .5s}
+.loki small,.who{font:11px ui-monospace,monospace;letter-spacing:.15em;color:var(--em);display:block;margin-bottom:4px}
+.tag{display:inline-block;margin-top:8px;font:12px ui-monospace,monospace;letter-spacing:.12em;color:var(--gold2);border:1px dashed var(--gold);padding:3px 9px}
+.bar{height:4px;background:#1a2a21;margin:10px 0 18px}.bar i{display:block;height:100%;background:var(--gold);transition:width .5s}
+.fade{animation:fade .8s both}@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.boot p{margin:6px 0;font:13px ui-monospace,monospace;color:var(--em);opacity:0;animation:fade .6s forwards}
+.glitch{animation:glitch .35s steps(2) 2}
+@keyframes glitch{0%{transform:translate(0)}25%{transform:translate(-4px,2px);filter:hue-rotate(40deg)}50%{transform:translate(4px,-2px)}75%{transform:translate(-2px,0)}100%{transform:none}}
+.sum li{margin:8px 0}.sum span{color:var(--dim)}
+/* tribunal */
+.bubble{padding:14px 18px;margin:12px 0;border:1px solid var(--line);background:var(--panel);animation:fade .5s both}
+.bubble.loki{border-left:4px solid var(--em)}
+.bubble.hulk{border:2px solid #4d9b3a;background:#12260d;font-weight:800;font-size:1.25rem;letter-spacing:.04em;animation:slam .4s both;color:#c8ffb0}
+.bubble.hulk .who{color:#7ed957}
+.bubble.sys{border-color:var(--red);color:#e0a0a0;font:13px ui-monospace,monospace}
+@keyframes slam{0%{transform:scale(2.2) rotate(-4deg);opacity:0}60%{transform:scale(.95)}100%{transform:none;opacity:1}}
+.shake{animation:shake .6s}
+@keyframes shake{0%,100%{transform:none}10%{transform:translate(-14px,8px)}25%{transform:translate(12px,-10px)}40%{transform:translate(-10px,-6px)}55%{transform:translate(10px,8px)}70%{transform:translate(-6px,4px)}85%{transform:translate(4px,-3px)}}
+#flash{position:fixed;inset:0;background:#cfffd0;opacity:0;pointer-events:none;z-index:60}
+#flash.go{animation:fl .6s}@keyframes fl{0%{opacity:.9}100%{opacity:0}}
+.evid{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.evid div{flex:1 1 120px;border:1px solid var(--line);padding:8px;font:11px ui-monospace,monospace;color:var(--dim);background:var(--panel)}
+.scatter div{animation:scat 1s forwards}
+.scatter div:nth-child(1){--x:-120px;--y:-60px;--r:-30deg}.scatter div:nth-child(2){--x:60px;--y:90px;--r:40deg}.scatter div:nth-child(3){--x:140px;--y:-80px;--r:25deg}
+@keyframes scat{to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:.35}}
+/* verdict */
+.center{text-align:center}
+.stamp{display:inline-block;border:5px double var(--gold2);color:var(--gold2);padding:10px 30px;font-size:clamp(2rem,8vw,4rem);transform:rotate(-4deg);animation:stamp .5s both;text-shadow:0 0 20px rgba(217,185,91,.4)}
+@keyframes stamp{0%{transform:scale(3) rotate(-12deg);opacity:0}70%{transform:scale(.95) rotate(-4deg);opacity:1}100%{transform:scale(1) rotate(-4deg)}}
+.hide{display:none}
+.msg{max-width:640px;margin:0 auto;font-size:1.12rem;line-height:1.75;color:#f6ecd0}
+.msg p{margin:0 0 1.1em}
+.ps{max-width:640px;margin:26px auto;border-top:1px solid var(--line);padding-top:20px;color:var(--dim)}
+.seal{display:inline-block;border:2px solid var(--gold2);border-radius:40px;padding:10px 22px;color:var(--gold2);font-size:.95rem;margin-top:10px}
+.flame{animation:flick .6s ease-in-out infinite alternate;transform-origin:50% 100%}
+@keyframes flick{from{transform:scale(1,1)}to{transform:scale(.85,1.15)}}
+#conf{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:40}
+#conf i{position:absolute;top:-20px;width:8px;height:12px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}#sweep{display:none}}
+</style></head>
+<body>
+<div id="sweep"></div><div id="flash"></div><div id="conf"></div>
+<main id="app"></main>
+<script>
+const Q=[
+{s:"SHAKTI SHALINI",q:"What role could Shakti Shalini actually play in the larger Maddock Horror Comedy Universe?",o:[
+["The ultimate weapon — the one force capable of bringing down the main antagonist.","Ah, the classic weapon theory. Why introduce a mysterious character merely to turn her into equipment?"],
+["The key to something older — her significance comes from what she can unlock, not simply what she can do.","You suspect the lock matters more than the key. Now, what exactly do you imagine is behind that door?"],
+["The wildcard — she has her own agenda, and neither heroes nor villains truly understand it.","Finally, someone who understands the value of having one’s own agenda. I may overlook your other shortcomings."],
+["The deciding force — her choices determine who deserves to win, rather than who is strongest.","A moral arbiter! How noble. How inconvenient for anyone who prefers solving problems with catastrophic violence."]]},
+{s:"VICKY",q:"If Vicky is caught in a conflict involving forces beyond ordinary human ability, what would make him indispensable?",o:[
+["A power of his own — Vicky eventually becomes a supernatural player himself.","Give the man powers. Naturally. Why solve a mystery when you can simply increase the protagonist’s statistics?"],
+["The human perspective — he understands something about the supernatural mystery that the powerful beings overlook.","Sometimes the person who understands the rules is more dangerous than the person who can break them."],
+["A buried connection — his past, Chanderi, or his origins tie him directly to the conflict.","A secret connection! The favourite refuge of every conspiracy theorist who has run out of evidence. Convince me."],
+["The underestimated outsider — he remains ordinary, making him uniquely capable of doing what the others cannot.","The ordinary man saves the extraordinary world. Delightfully inconvenient for everyone who considers themselves special."]]},
+{s:"CHANDRAVANSHI",q:"Suppose Chandravanshi’s objective goes beyond defeating the heroes. Which hidden motive best explains a larger plan?",o:[
+["Restoration — he wants to reclaim something he believes was taken from his bloodline.","Revenge dressed as justice. A timeless classic. The difficult question is whether he remembers what justice looked like before the revenge."],
+["Domination — he wants every supernatural faction under one authority, with himself at the centre.","Ah, order. Everyone wants it, right up until someone else gets to define it."],
+["The dangerous gamble — he intends to unleash a power he believes he can control, but may be wrong.","The most dangerous person in the room may be the one who thinks they are in control."],
+["Forced revelation — he wants to expose the supernatural world to humanity, whatever the consequences.","Expose the truth and let the world burn? Dramatic. Reckless. I confess, I see the appeal."]]},
+{s:"THE HIDDEN CONNECTION",q:"If one character is the connective thread behind the universe’s biggest mystery, which theory would you defend?",o:[
+["Jana — his recurring presence may be more significant than it first appears.","Recurring appearances as evidence. Bold. If I appear in enough places, will you conclude I own the universe?"],
+["Vicky — Chanderi could be central to a mystery larger than its local legends.","Chanderi again! Either you’ve spotted a pattern or you simply refuse to leave that town alone."],
+["Shraddha Kapoor’s mysterious character — the unanswered questions about her identity may be the biggest clue.","Mystery is an excellent tool. So is withholding information. I should know."],
+["The overlooked character — the real connection belongs to someone the audience has barely considered.","The overlooked one! A fine theory. Conveniently impossible to disprove until the credits roll."]]},
+{s:"PEHLA MAHAYUDH",q:"Which twist would most convincingly force everyone to rethink the events of Pehla Mahayudh?",o:[
+["The false victory — the heroes unknowingly accomplish the villain’s real objective.","A victory that was actually a defeat. Beautiful. The heroes celebrate, the villain smiles, and the audience demands a refund for its emotional stability."],
+["The misunderstood enemy — the apparent villain was holding back something worse.","The enemy was protecting you all along? How touching. I do hope you have evidence before apologising."],
+["The internal betrayal — the victory becomes possible only because someone inside the alliance betrays the others.","Betrayal! Finally, a theory with proper dramatic potential. Trust is so much more entertaining when it is misplaced."],
+["The engineered conflict — the entire war was designed to awaken, create, or select someone.","A war engineered from the beginning. You suspect the entire board was arranged before the first piece moved. Now that is a theory worth investigating."]]}];
+const TAGS=["PLAUSIBLE","SUSPICIOUSLY CONVENIENT","INSUFFICIENT EVIDENCE","LOKI IS TAKING NOTES"];
+const VAR={1:["ROOMMATE VARIANT #01",["Professional overthinker.","Capable of turning one question into seventeen theories.","Has strong opinions about events that have not happened yet.","Unpredictable enough to make the timeline nervous."]],
+2:["ROOMMATE VARIANT #02",["Known for questionable decisions followed by the inevitable: “Why the hell did I do that?”","Frequently involved in extended intellectual disputes.","Has participated in far too many conversations that should have ended hours earlier.","Refuses to let a bad theory go unchallenged."]]};
+const S={stage:1,v:null,qi:0,ans:[],pick:null,reviewed:false};
+const app=document.getElementById("app");let timers=[];
+const L=["A","B","C","D"];
+const later=(f,ms)=>timers.push(setTimeout(f,ms));
+const clearT=()=>{timers.forEach(clearTimeout);timers=[]};
+const hdr=(c,st)=>`<div class="meta"><span>CASE FILE: <b>M-001</b></span><span>CLEARANCE: <b>RESTRICTED</b></span><span>STATUS: <b>${st}</b></span></div>`;
+function go(n){S.stage=n;window.scrollTo(0,0);render()}
+function render(){clearT();document.body.classList.remove("warm");({1:s1,2:s2,3:s3,4:s4,5:s5})[S.stage]()}
+function s1(){
+app.innerHTML=`<div class="fade"><p class="cond" style="color:var(--dim);margin:30px 0 4px">Temporal Variance Authority</p><p class="cond" style="color:var(--gold);margin:0 0 20px">Classified Investigation Division</p>
+${hdr(0,"AWAITING INVESTIGATOR")}
+<div class="boot panel"><p style="animation-delay:.4s">> INITIALISING SACRED TIMELINE SCAN…</p><p style="animation-delay:1.2s">> ANOMALY LOCATED: ROOMMATE TIMELINE</p><p style="animation-delay:2s">> VARIANTS DETECTED: 2</p><p style="animation-delay:2.8s">> UNRESOLVED THEORIES: 5</p></div>
+<h1 style="margin:34px 0 14px">“A matter of unusual importance requires your immediate attention.”</h1>
+<p class="sub">“An anomaly has been detected in the roommate timeline. Two variants. Five unresolved theories. One verdict that may alter the course of the evening.”</p>
+<button class="btn" id="go">Access Classified File</button></div>`;
+document.getElementById("go").onclick=()=>{app.classList.add("glitch");setTimeout(()=>{app.classList.remove("glitch");go(2)},400)}}
+function s2(){
+const card=n=>`<button class="card ${S.v==n?"sel":""}" data-v="${n}" aria-pressed="${S.v==n}"><span class="tick">${S.v==n?"✔ SELECTED":""}</span><h3>${VAR[n][0]}</h3><ul>${VAR[n][1].map(t=>`<li>${t}</li>`).join("")}</ul></button>`;
+app.innerHTML=`<div class="fade">${hdr(0,"VARIANT IDENTIFICATION")}<h1 style="margin:26px 0 8px">Identify the Variant</h1>
+<p class="sub">“Two versions of the same questionable roommate experiment have entered the timeline.”</p>
+<div class="grid" style="margin-top:20px">${card(1)}${card(2)}</div>
+<button class="btn" id="go" ${S.v?"":"disabled"}>Enter the Investigation</button></div>`;
+app.querySelectorAll(".card").forEach(c=>c.onclick=()=>{S.v=+c.dataset.v;s2()});
+document.getElementById("go").onclick=()=>{S.qi=0;S.ans=[];S.pick=null;go(3)}}
+function s3(){
+if(S.qi>=5)return summary();
+const q=Q[S.qi];const p=S.pick;
+app.innerHTML=`<div class="fade" id="qv">${hdr(0,"TRIBUNAL IN SESSION")}
+<h2 style="margin-top:22px">The Mahayudh Files</h2>
+${S.qi==0?`<p class="sub">“Five theories. Four possible explanations each. Absolutely no guarantee that any of you knows what you’re talking about.”</p>
+<div class="panel sub" style="font-size:.92rem"><span class="who">TVA SYSTEM NOTICE</span>Investigator, you must evaluate five unresolved hypotheses concerning the Maddock Horror Comedy Universe and the anticipated Mahayudh storyline. These are speculative fan theories, not confirmed plot details. Nothing here is officially correct. Loki is presiding, which is regrettable.</div>`:""}
+<div class="bar"><i style="width:${(S.qi+(p!=null?1:0))/5*100}%"></i></div>
+<p class="cond" style="color:var(--em);font-size:.85rem">FILE 0${S.qi+1} OF 05 — SUBJECT: ${q.s}</p>
+<h3 style="font-family:system-ui,sans-serif;letter-spacing:0;text-transform:none;font-size:1.3rem;margin:8px 0 18px;line-height:1.4">${q.q}</h3>
+<div class="grid">${q.o.map((o,i)=>{const[a,b]=o[0].split(" — ");return `<button class="card opt ${p===i?"sel":""}" data-i="${i}" aria-pressed="${p===i}"><span class="k">${L[i]}</span><b>${a}</b> — ${b}</button>`}).join("")}</div>
+${p!=null?`<div class="loki"><small>LOKI, PRESIDING JUDGE</small>“${q.o[p][1]}”<br><span class="tag">EVIDENCE CLASSIFICATION: ${TAGS[(S.qi+p)%4]}</span></div>`:""}
+<button class="btn" id="nx" ${p!=null?"":"disabled"}>${S.qi<4?"Next File":"Review Case Report"}</button></div>`;
+app.querySelectorAll(".opt").forEach(c=>c.onclick=()=>{S.pick=+c.dataset.i;s3()});
+document.getElementById("nx").onclick=()=>{if(S.pick==null)return;S.ans[S.qi]=S.pick;S.pick=null;S.qi++;S.qi>=5?summary():s3();window.scrollTo(0,0)}}
+function summary(){
+app.innerHTML=`<div class="fade">${hdr(0,"REPORT COMPILED")}<h2 style="margin-top:22px">Investigation Summary</h2>
+<p class="sub">INVESTIGATOR ALIGNMENT: ${VAR[S.v][0]}</p>
+<div class="panel"><ol class="sum">${Q.map((q,i)=>`<li><b class="cond" style="color:var(--gold2)">FILE 0${i+1} · ${q.s}</b><br><span>Theory ${L[S.ans[i]]}:</span> ${q.o[S.ans[i]][0].split(" — ")[0]}</li>`).join("")}</ol></div>
+<p class="loki" style="font-style:italic">Five answers submitted. Zero certainty achieved. An impressive display of confidence under deeply questionable circumstances.</p>
+<button class="btn" id="sv">Submit Final Verdict</button> <button class="btn ghost" id="bk">Review answers</button></div>`;
+document.getElementById("sv").onclick=()=>go(4);
+document.getElementById("bk").onclick=()=>{S.qi=4;S.pick=S.ans[4];s3()}}
+function s4(){
+app.innerHTML=`<div>${hdr(0,"TRIBUNAL CONVENED")}<h2 style="margin:22px 0 6px;text-align:center">⚖ The Cosmic Tribunal ⚖</h2>
+<div class="evid" id="ev"><div>EXHIBIT A<br>THEORY SUBMISSIONS</div><div>EXHIBIT B<br>LOKI’S “NOTES”</div><div>EXHIBIT C<br>SEVENTEEN THEORIES</div></div>
+<div id="log"></div><div class="center" id="act"><button class="btn ghost" id="sk">Skip to verdict</button></div></div>`;
+const log=document.getElementById("log");
+const add=(c,w,t)=>{log.insertAdjacentHTML("beforeend",`<div class="bubble ${c}"><span class="who">${w}</span>${t}</div>`);log.lastElementChild.scrollIntoView({behavior:"smooth",block:"center"})};
+const loki=t=>add("loki","LOKI, PRESIDING JUDGE",t),hulk=t=>add("hulk","HULK",t);
+const boom=()=>{app.classList.add("shake");document.getElementById("flash").classList.remove("go");void document.getElementById("flash").offsetWidth;document.getElementById("flash").classList.add("go");document.getElementById("ev").classList.add("scatter");setTimeout(()=>app.classList.remove("shake"),700)};
+const end=()=>{document.getElementById("act").innerHTML=`<button class="btn" id="fv">Initiate Final Verdict</button>`;document.getElementById("fv").onclick=()=>go(5)};
+const steps=[
+[500,()=>loki("“After a comprehensive investigation, five highly questionable theories, and a frankly alarming amount of confidence, this tribunal is prepared to deliver its verdict.”")],
+[4500,()=>loki("“The evidence points to a conclusion of extraordinary importance. One variant has demonstrated—”")],
+[3800,()=>{boom();add("sys","⚠ SYSTEM ALERT","IMPACT DETECTED. COURTROOM INTEGRITY: COMPROMISED. EVIDENCE PANELS: SCATTERED.")}],
+[1500,()=>hulk("“ENOUGH TALK! TOO MANY THEORIES! TOO MUCH LOKI!”")],
+[2200,()=>hulk("“BIRTHDAY CASE. OBVIOUS WINNER.”")],
+[2200,()=>loki("“YOU CANNOT SIMPLY IGNORE THE ENTIRE JUDICIAL PROCESS!”")],
+[2200,()=>{hulk("“WATCH ME.”");boom()}],
+[2200,()=>add("sys","TRIBUNAL AUDIT","LOKI FOUND TO HAVE SELECTIVELY PRESENTED EVIDENCE AND ENCOURAGED ENDLESS ARGUMENT FOR HIS OWN ENTERTAINMENT.")],
+[2800,()=>hulk("“LOKI PLAYED BOTH SIDES. MADE YOU ARGUE FOR HOURS. CLASSIC LOKI.”")],
+[2800,()=>{loki("“I prefer the term… intellectual entertainment.”");later(end,1800)}]];
+let t=0;steps.forEach(s=>{t+=s[0];later(s[1],t)});
+document.getElementById("sk").onclick=()=>go(5)}
+function s5(){
+app.innerHTML=`<div class="center"><div id="st" style="margin-top:50px"><span class="stamp cond">Case Closed.</span></div>
+<h2 id="w" class="hide" style="margin-top:34px">Winner: Roommate Variant #01</h2>
+<p id="vd" class="hide cond" style="color:var(--gold2);font-size:1.15rem;margin-top:14px">Verdict: Guilty of being one year older.</p>
+<div id="cake" class="hide" style="margin-top:30px">${cake()}</div>
+<div id="m" class="hide msg" style="text-align:left;margin-top:30px"><p>Somehow, living together turned ordinary days into stories worth remembering.</p><p>The messy rooms, the random roaming with absolutely no destination, and those late-night movies that somehow became hours of theories, debates, and increasingly ridiculous explanations.</p><p>We could spend hours doing practically nothing, argue about things that haven’t even happened yet, and still somehow make it a memorable evening.</p><p>I don’t think we need to make a big emotional speech about friendship. But life was definitely more fun with you as my roommate, and I’m genuinely glad we got to share those memories.</p><p>Here’s to more arguments, more questionable theories, and many more stories that will probably sound completely unbelievable when we tell them later.</p><p style="color:var(--gold2)"><b>Happy Birthday, Variant #01.</b></p></div>
+<div id="ps" class="hide ps" style="text-align:left"><p><b>P.S. You may now return to your regularly scheduled overthinking.</b></p><p>The TVA has reviewed your case and determined that your age has increased by one year, but the available evidence suggests your ability to overanalyse absolutely everything remains unchanged.</p><p>Appeals may be submitted in writing. They will be ignored.</p></div>
+<div id="sl" class="hide"><span class="seal cond">Timeline stable. Roommate status: irreplaceable.</span><br><button class="btn" id="re">Reopen the Case</button></div></div>`;
+const show=(id,ms,warm)=>later(()=>{const e=document.getElementById(id);e.classList.remove("hide");e.classList.add("fade");if(warm){document.body.classList.add("warm");confetti()}e.scrollIntoView({behavior:"smooth",block:"center"})},ms);
+show("w",1500);show("vd",3000);show("cake",5200,1);show("m",8500);show("ps",20000);show("sl",24500);
+later(()=>{const e=document.getElementById("sl");e.scrollIntoView({behavior:"smooth",block:"end"})},24700);
+document.getElementById("re").onclick=()=>{Object.assign(S,{stage:1,v:null,qi:0,ans:[],pick:null});document.getElementById("conf").innerHTML="";window.scrollTo(0,0);render()}}
+function cake(){return `<svg viewBox="0 0 400 330" width="100%" style="max-width:440px" role="img" aria-label="Birthday cake reading Happy Birthday, Roommate Variant #01"><defs><radialGradient id="g" cx="50%" cy="40%"><stop offset="0" stop-color="#ffd978" stop-opacity=".55"/><stop offset="1" stop-color="#ffd978" stop-opacity="0"/></radialGradient></defs>
+<circle cx="200" cy="150" r="190" fill="url(#g)"/>
+<ellipse cx="200" cy="300" rx="170" ry="16" fill="#2a1d0c"/>
+<rect x="60" y="205" width="280" height="90" rx="10" fill="#7a4a24"/><rect x="60" y="205" width="280" height="14" fill="#4a2c14"/>
+<rect x="80" y="130" width="240" height="80" rx="10" fill="#f3e3b8"/>
+<path d="M80 140q15 28 30 0t30 0 30 0 30 0 30 0 30 0 30 0 30 0v-10H80z" fill="#d9b95b"/>
+<rect x="80" y="205" width="240" height="8" fill="#b8963e"/>
+${[130,165,200,235,270].map(x=>`<rect x="${x-3}" y="92" width="6" height="40" fill="#2fe08a"/><ellipse class="flame" cx="${x}" cy="84" rx="5" ry="10" fill="#ffd25a"/>`).join("")}
+<text x="200" y="172" text-anchor="middle" font-family="Arial Narrow,Impact,sans-serif" font-size="17" font-weight="700" fill="#5a3a12" letter-spacing="1.5">HAPPY BIRTHDAY,</text>
+<text x="200" y="196" text-anchor="middle" font-family="Arial Narrow,Impact,sans-serif" font-size="17" font-weight="700" fill="#5a3a12" letter-spacing="1.5">ROOMMATE VARIANT #01</text>
+<text x="200" y="262" text-anchor="middle" font-family="Arial Narrow,sans-serif" font-size="13" fill="#e8c87a" letter-spacing="3">TVA · CASE M-001</text></svg>`}
+function confetti(){const c=document.getElementById("conf"),cols=["#d9b95b","#2fe08a","#efe9d6","#b8963e"];for(let i=0;i<46;i++){const e=document.createElement("i");e.style.left=Math.random()*100+"%";e.style.background=cols[i%4];e.style.animationDuration=4+Math.random()*4+"s";e.style.animationDelay=Math.random()*2.5+"s";c.appendChild(e)}setTimeout(()=>c.innerHTML="",11000)}
+render();
+</script></body></html>
